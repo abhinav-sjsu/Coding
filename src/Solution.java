@@ -28,6 +28,25 @@ public class Solution {
 	        return sb.toString();
 	    }
 	    
+	    public static void nthHighestSalary(int n) {
+	    	List<Employee> list = new ArrayList<>();
+			
+			list.add(new Employee(1,"A",1,"01/01/2000",10000.00));
+			list.add(new Employee(2,"B",1,"01/01/2002",20000.00));
+			list.add(new Employee(3,"C",1,"01/01/2004",30000.00));
+			list.add(new Employee(4,"D",1,"01/01/2006",40000.00));
+			list.add(new Employee(5,"E",1,"01/01/2008",50000.00));
+			list.add(new Employee(6,"F",1,"01/01/2010",60000.00));
+	    	
+	    	// Find Nth highest salary using Stream API
+			Optional<Double> salary = list.stream()
+					.map(e -> e.getSalary())
+					.sorted(Comparator.reverseOrder())
+					.skip(n-1).findFirst();
+			
+			LOGGER.info(salary.get().toString());
+	    }
+	    
 	    
 
 	public static void main(String[] args) {
@@ -38,24 +57,7 @@ public class Solution {
 		
 		LOGGER.info(output);
 		
-		List<Employee> list = new ArrayList<>();
-		
-		list.add(new Employee(1,"A",1,"01/01/2000",10000.00));
-		list.add(new Employee(2,"B",1,"01/01/2002",20000.00));
-		list.add(new Employee(3,"C",1,"01/01/2004",30000.00));
-		list.add(new Employee(4,"D",1,"01/01/2006",40000.00));
-		list.add(new Employee(5,"E",1,"01/01/2008",50000.00));
-		list.add(new Employee(6,"F",1,"01/01/2010",60000.00));
-		
-		// Find Nth highest salary using Stream API
-		Optional<Double> salary = list.stream()
-				.map(e -> e.getSalary())
-				.sorted(Comparator.reverseOrder())
-				.skip(2).findFirst();
-		
-		LOGGER.info(salary.get().toString());
-		
-
+		nthHighestSalary(1);
 	}
 
 }
