@@ -48,16 +48,40 @@ public class Solution {
 	    }
 	    
 	    
+//	    Input: jewels = "aA", stones = "aAAbbbb"
+//	    Output: 3
+	    
+	    public static int numJewelsInStones(String jewels, String stones) {
+	        int count=0;
+	        
+	        for(int i=0;i<jewels.length();i++) {
+	        	CharSequence c = jewels.subSequence(i, i);
+	        	
+	        	System.out.println("Character is "+c.toString());
+	        	System.out.println("Count is "+count);
+	        	if(stones.contains(c)) {
+	        		count++;
+	        	}
+	        }
+	        return count;
+	    }
+	    
+	    
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//Solution s = new Solution();
 		
-		String output = reverseWords("Let's take LeetCode contest");
+//		String output = reverseWords("Let's take LeetCode contest");
+//		
+//		LOGGER.info(output);
+//		
+//		nthHighestSalary(1);
 		
-		LOGGER.info(output);
+		int count = numJewelsInStones("aA","aAAbbbb");
 		
-		nthHighestSalary(1);
+		System.out.println("Count is "+count);
+		
 	}
 
 }
